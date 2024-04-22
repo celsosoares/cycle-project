@@ -1,0 +1,1 @@
+ C:\\Users\\kazef\\Desktop\\ProjetoMundo2\\cycle-project\\.dart_tool\\flutter_build\\ee394dc68acf2446a9164fe30d0d5e75\\native_assets.yaml: 
