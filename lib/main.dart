@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'sign-in.dart';
 import 'sign-up.dart';
 
-void main() {
-  runApp(MyApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart'; 
+
+void main() async {
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
