@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'sign-in.dart';
-import 'sign-up.dart';
+import 'pages/sign-in.dart';
+import 'pages/sign-up.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; 
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         ),
         home: MyHomePage(),
         routes: {
-          '/sign-up': (context) => Signup(),
-          '/sign-in': (context) => Signin(),
+          '/sign-up': (context) => SignUpPage(),
+          '/sign-in': (context) => SignInPage(),
         },
     );
   }
