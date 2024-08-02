@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sign-in.dart';
 import 'sign-up.dart';
+import 'recommendations.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/sign-up': (context) => Signup(),
           '/sign-in': (context) => Signin(),
+          '/recommendations': (context) => ListViewRecommendations(),
         },
     );
   }
@@ -47,7 +49,14 @@ class MyHomePage extends StatelessWidget {
             },
             child: Text('Tela de login'),
             
-          )         
+          ),   
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/recommendations');
+            },
+            child: Text('Recomendações'),
+            
+          )                 
         ],
       ),
     );
