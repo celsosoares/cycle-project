@@ -7,6 +7,7 @@ import 'pages/home.dart';
 import 'pages/recommendations.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomePage.routeName: (context) => HomePage(),
         ListViewRecommendations.routeName: (context) =>
-            const ListViewRecommendations()
+            const ListViewRecommendations(),
       },
     );
   }
