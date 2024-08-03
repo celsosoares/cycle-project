@@ -44,15 +44,19 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[850],
+        fixedColor: Colors.grey[850],
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset('images/crafts.png', fit: BoxFit.contain),
+            icon: Icon(Icons.home),
             label: 'Início',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Buscar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
           ),
           // Adicione mais itens conforme necessário
         ],
