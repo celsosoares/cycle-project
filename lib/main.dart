@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/sign-in.dart';
 import 'pages/sign-up.dart';
+import 'pages/recommendations.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/sign-up': (context) => SignUpPage(),
           '/sign-in': (context) => SignInPage(),
+          '/recommendations': (context) => ListViewRecommendations(),
         },
     );
   }
@@ -53,7 +55,15 @@ class MyHomePage extends StatelessWidget {
             },
             child: Text('Tela de login'),
             
-          )         
+          ),   
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/recommendations');
+            },
+            child: Text('Recomendações'),
+            
+          )  
+                
         ],
       ),
     );
