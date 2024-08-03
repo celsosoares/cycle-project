@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../../utils/colors.dart';
 
 class SignInPage extends StatefulWidget {
+  const SignInPage({Key? key}) : super(key: key);
+  static const routeName = '/SignIn';
   @override
   _SignInPageState createState() => _SignInPageState();
 }

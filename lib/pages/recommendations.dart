@@ -13,10 +13,12 @@ class ImageData {
 }
 
 class ListViewRecommendations extends StatefulWidget {
+  static const routeName = '/ListView';
   const ListViewRecommendations({Key? key}) : super(key: key);
 
   @override
-  _ListViewRecommendationsState createState() => _ListViewRecommendationsState();
+  _ListViewRecommendationsState createState() =>
+      _ListViewRecommendationsState();
 }
 
 class _ListViewRecommendationsState extends State<ListViewRecommendations> {
@@ -85,23 +87,30 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
         children: [
           Expanded(
             child: ListView.separated(
-              itemCount: imageDataList.length, // Set the number of items in the list
-              separatorBuilder: (BuildContext context, int index) => const Divider(), // Add a divider between each item in the list
+              itemCount:
+                  imageDataList.length, // Set the number of items in the list
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(), // Add a divider between each item in the list
               itemBuilder: (BuildContext context, int index) {
-                final imageData = imageDataList[index]; // Get the ImageData object at the current index
-                final isSelected = selectedIndices.contains(index); // Check if the item is selected
+                final imageData = imageDataList[
+                    index]; // Get the ImageData object at the current index
+                final isSelected = selectedIndices
+                    .contains(index); // Check if the item is selected
                 return Padding(
-                  padding: const EdgeInsets.all(8.0), // Add padding around each ListTile
+                  padding: const EdgeInsets.all(
+                      8.0), // Add padding around each ListTile
                   child: ListTile(
                     leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Adjust the border radius as needed
                       child: Stack(
                         children: [
                           Image.asset(
                             imageData.imagePath,
                             width: 70, // Set the desired width
                             height: 70, // Set the desired height
-                            fit: BoxFit.cover, // Ensure the image covers the specified dimensions
+                            fit: BoxFit
+                                .cover, // Ensure the image covers the specified dimensions
                           ),
                           if (isSelected)
                             Positioned(
@@ -109,7 +118,8 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
                               top: 0,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white, // White background for the check mark
+                                  color: Colors
+                                      .white, // White background for the check mark
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: Colors.green, // Green border
@@ -117,10 +127,12 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(4.0), // Padding around the check mark
+                                  padding: const EdgeInsets.all(
+                                      4.0), // Padding around the check mark
                                   child: Icon(
                                     Icons.check_circle,
-                                    color: Colors.green, // Solid green check mark
+                                    color:
+                                        Colors.green, // Solid green check mark
                                     size: 24, // Size of the check mark icon
                                   ),
                                 ),
@@ -154,7 +166,8 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
             padding: const EdgeInsets.all(16.0),
             child: Container(
               width: 200, // Set a fixed width for the button
-              padding: const EdgeInsets.symmetric(vertical: 14), // Adjust the vertical padding
+              padding: const EdgeInsets.symmetric(
+                  vertical: 14), // Adjust the vertical padding
               decoration: BoxDecoration(
                 color: buttonColor, // Replace with your buttonColor
                 borderRadius: BorderRadius.circular(15),

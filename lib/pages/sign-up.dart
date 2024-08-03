@@ -8,6 +8,8 @@ import '../../utils/colors.dart';
 import 'package:uuid/uuid.dart';
 
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+  static const routeName = '/SignUp';
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
