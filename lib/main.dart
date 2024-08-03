@@ -1,14 +1,15 @@
+import 'package:cycle_project/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'pages/sign-in.dart';
 import 'pages/sign-up.dart';
 import 'pages/recommendations.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart'; 
+import 'firebase_options.dart';
 
 void main() async {
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }
@@ -19,21 +20,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Cycle',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
-        ),
-        home: MyHomePage(),
-        routes: {
-          '/sign-up': (context) => SignUpPage(),
-          '/sign-in': (context) => SignInPage(),
-          '/recommendations': (context) => ListViewRecommendations(),
-        },
+      title: 'Cycle',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
+      ),
+      home: MyHomePage(),
+      routes: {
+        '/sign-up': (context) => SignUpPage(),
+        '/sign-in': (context) => SignInPage(),
+        '/home': (context) => HomePage(),
+        '/recommendations': (context) => ListViewRecommendations(),
+      },
     );
   }
 }
-
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -47,23 +49,19 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/sign-up');
             },
             child: Text('Tela de cadastro'),
-            
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/sign-in');
             },
             child: Text('Tela de login'),
-            
-          ),   
+          ),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/recommendations');
             },
             child: Text('Recomendações'),
-            
-          )  
-                
+          )
         ],
       ),
     );

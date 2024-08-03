@@ -157,8 +157,7 @@ class _SignInPageState extends State<SignInPage> {
                             .signInWithEmailAndPassword(email, password);
 
                         if (user != null) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()));
+                          Navigator.of(context).pushNamed('/home');
                         } else {
                           showDialog(
                             context: context,

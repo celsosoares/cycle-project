@@ -303,8 +303,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               );
                             },
                           );
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignInPage()));
+                          Navigator.of(context).pushNamed('/sign-in');
                         } else {
                           showDialog(
                             context: context,
