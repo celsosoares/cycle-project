@@ -1,4 +1,5 @@
 import 'package:cycle_project/firebase/firebase_auth.dart';
+import 'package:cycle_project/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../utils/colors.dart';
@@ -9,97 +10,98 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   AuthService authService = AuthService();
   bool _passVis = true;
-  
+
   Widget _buildTextEmail() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _emailController,
-      autofocus: true,
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        labelText: "Seu endereço de email",
-        labelStyle: const TextStyle(
-          color: Color.fromRGBO(30, 30, 30, 100),
-          fontSize: 20,
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
+      ),
+      child: TextFormField(
+        controller: _emailController,
+        autofocus: true,
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          labelText: "Seu endereço de email",
+          labelStyle: const TextStyle(
+            color: Color.fromRGBO(30, 30, 30, 100),
+            fontSize: 20,
+          ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildTextPass() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _passwordController,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        hintText: "Sua senha",
-        hintStyle: const TextStyle(
-          color: Colors.black45,
-          fontSize: 19,
-        ),
-        suffixIcon: IconButton(
-          icon: _passVis ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
-          onPressed: () {
-            setState(() {
-              _passVis = !_passVis;
-            });
-          },
-          color: Colors.grey,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
       ),
-      autofocus: true,
-      keyboardType: TextInputType.text,
-      obscureText: _passVis,
-    ),
-  );
-}
+      child: TextFormField(
+        controller: _passwordController,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          hintText: "Sua senha",
+          hintStyle: const TextStyle(
+            color: Colors.black45,
+            fontSize: 19,
+          ),
+          suffixIcon: IconButton(
+            icon: _passVis
+                ? const Icon(Icons.visibility_off)
+                : const Icon(Icons.visibility),
+            onPressed: () {
+              setState(() {
+                _passVis = !_passVis;
+              });
+            },
+            color: Colors.grey,
+          ),
+        ),
+        autofocus: true,
+        keyboardType: TextInputType.text,
+        obscureText: _passVis,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.black,
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        backgroundColor: Colors.white,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -151,26 +153,19 @@ class _SignInPageState extends State<SignInPage> {
                         String email = _emailController.text.trim();
                         String password = _passwordController.text.trim();
 
-                        User? user = await authService.signInWithEmailAndPassword(email, password);
+                        User? user = await authService
+                            .signInWithEmailAndPassword(email, password);
 
                         if (user != null) {
-                          // TODO: Adicionar rota para a proxima pagina
-                          print("Button tapped");
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         HomePage(email: email, nome: "Nome do Usuário"),
-                          //   ),
-                          // );  
+                          Navigator.of(context).pushNamed('/home');
                         } else {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialog(
                                 title: Text('Erro de Login'),
-                                content:
-                                    Text('Credenciais inválidas. Tente novamente.'),
+                                content: Text(
+                                    'Credenciais inválidas. Tente novamente.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
@@ -189,7 +184,8 @@ class _SignInPageState extends State<SignInPage> {
                           "Entrar",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 235, 235, 235), //cor do texto
+                            color: Color.fromARGB(
+                                255, 235, 235, 235), //cor do texto
                             fontSize: 22,
                           ),
                         ),
@@ -209,7 +205,7 @@ class _SignInPageState extends State<SignInPage> {
                         "  Ou entre com   ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: textColor2, 
+                          color: textColor2,
                           fontSize: 16,
                         ),
                       ),

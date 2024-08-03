@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cycle_project/firebase/firebase_auth.dart';
 import 'package:cycle_project/firebase/firebase_service.dart';
+import 'package:cycle_project/pages/sign-in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../utils/colors.dart';
@@ -12,14 +13,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final FirebaseService firebaseService = FirebaseService();
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _checkPasswordController = TextEditingController();
+  final TextEditingController _checkPasswordController =
+      TextEditingController();
 
   final TextEditingController _password = TextEditingController();
   final TextEditingController _checkPassword = TextEditingController();
@@ -28,175 +29,178 @@ class _SignUpPageState extends State<SignUpPage> {
   AuthService authService = AuthService();
 
   Widget _buildTextName() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _nameController,
-      autofocus: true,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        labelText: "Seu nome e sobrenome",
-        labelStyle: const TextStyle(
-          color: Color.fromRGBO(30, 30, 30, 100),
-          fontSize: 15,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
       ),
-      validator: (value) {
-        if (value != null && value.isEmpty) {
-          return "O nome é obrigatório";
-        } else if (value != null && value.length > 18) {
-          return "O nome pode ter no máximo 18 caracteres";
-        }
-        return null;
-      },
-    ),
-  );
-}
+      child: TextFormField(
+        controller: _nameController,
+        autofocus: true,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          labelText: "Seu nome e sobrenome",
+          labelStyle: const TextStyle(
+            color: Color.fromRGBO(30, 30, 30, 100),
+            fontSize: 15,
+          ),
+        ),
+        validator: (value) {
+          if (value != null && value.isEmpty) {
+            return "O nome é obrigatório";
+          } else if (value != null && value.length > 18) {
+            return "O nome pode ter no máximo 18 caracteres";
+          }
+          return null;
+        },
+      ),
+    );
+  }
 
   Widget _buildTextEmail() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _emailController,
-      autofocus: true,
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        labelText: "Seu endereço de email",
-        labelStyle: const TextStyle(
-          color: Color.fromRGBO(30, 30, 30, 100),
-          fontSize: 15,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
       ),
-      validator: (value) {
-        if (value != null && value.isEmpty) {
-          return "O email é obrigatório";
-        } else if (value != null &&
-            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                .hasMatch(value)) {
-          return "Insira um email valido";
-        }
-        return null;
-      },
-    ),
-  );
-}
+      child: TextFormField(
+        controller: _emailController,
+        autofocus: true,
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          labelText: "Seu endereço de email",
+          labelStyle: const TextStyle(
+            color: Color.fromRGBO(30, 30, 30, 100),
+            fontSize: 15,
+          ),
+        ),
+        validator: (value) {
+          if (value != null && value.isEmpty) {
+            return "O email é obrigatório";
+          } else if (value != null &&
+              !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  .hasMatch(value)) {
+            return "Insira um email valido";
+          }
+          return null;
+        },
+      ),
+    );
+  }
 
-  
   Widget _buildPassword() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _passwordController,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        hintText: "Sua melhor senha",
-        hintStyle: const TextStyle(
-          color: Color.fromRGBO(30, 30, 30, 100),
-          fontSize: 19,
-        ),
-        suffixIcon: IconButton(
-          icon: _passVis ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
-          onPressed: () {
-            setState(() {
-              _passVis = !_passVis;
-            });
-          },
-          color: Colors.grey,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
       ),
-      autofocus: true,
-      keyboardType: TextInputType.text,
-      obscureText: _passVis,
-    ),
-  );
-}
+      child: TextFormField(
+        controller: _passwordController,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          hintText: "Sua melhor senha",
+          hintStyle: const TextStyle(
+            color: Color.fromRGBO(30, 30, 30, 100),
+            fontSize: 19,
+          ),
+          suffixIcon: IconButton(
+            icon: _passVis
+                ? const Icon(Icons.visibility_off)
+                : const Icon(Icons.visibility),
+            onPressed: () {
+              setState(() {
+                _passVis = !_passVis;
+              });
+            },
+            color: Colors.grey,
+          ),
+        ),
+        autofocus: true,
+        keyboardType: TextInputType.text,
+        obscureText: _passVis,
+      ),
+    );
+  }
 
   Widget _buildRewritePassword() {
-  return Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25,
-      vertical: 10,
-    ),
-    child: TextFormField(
-      controller: _checkPasswordController,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 22,
-        ),
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.grey),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        hintText: "Sua melhor senha",
-        hintStyle: const TextStyle(
-          color: Color.fromRGBO(30, 30, 30, 100),
-          fontSize: 19,
-        ),
-        suffixIcon: IconButton(
-          icon: _passVis ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
-          onPressed: () {
-            setState(() {
-              _passVis = !_passVis;
-            });
-          },
-          color: Colors.grey,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+        vertical: 10,
       ),
-      autofocus: true,
-      keyboardType: TextInputType.text,
-      obscureText: _passVis,
-      validator: (value) {
-        if (value != null && value.isEmpty) {
-          return "Reinsira a senha";
-        } else if (_password.text != _checkPassword.text) {
-          return "A confirmação de senha não confere";
-        }
-        return null;
-      },
-    ),
-  );
-}
+      child: TextFormField(
+        controller: _checkPasswordController,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 22,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          hintText: "Sua melhor senha",
+          hintStyle: const TextStyle(
+            color: Color.fromRGBO(30, 30, 30, 100),
+            fontSize: 19,
+          ),
+          suffixIcon: IconButton(
+            icon: _passVis
+                ? const Icon(Icons.visibility_off)
+                : const Icon(Icons.visibility),
+            onPressed: () {
+              setState(() {
+                _passVis = !_passVis;
+              });
+            },
+            color: Colors.grey,
+          ),
+        ),
+        autofocus: true,
+        keyboardType: TextInputType.text,
+        obscureText: _passVis,
+        validator: (value) {
+          if (value != null && value.isEmpty) {
+            return "Reinsira a senha";
+          } else if (_password.text != _checkPassword.text) {
+            return "A confirmação de senha não confere";
+          }
+          return null;
+        },
+      ),
+    );
+  }
 
   void sendData(nome, email) async {
     String id = Uuid().v4();
@@ -214,13 +218,13 @@ class _SignUpPageState extends State<SignUpPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.black,
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        backgroundColor: Colors.white,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -271,54 +275,56 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     child: InkWell(
                       onTap: () async {
-                            String name = _nameController.text.trim();
-                            String email = _emailController.text.trim();
-                            String password = _passwordController.text.trim();
+                        String name = _nameController.text.trim();
+                        String email = _emailController.text.trim();
+                        String password = _passwordController.text.trim();
 
-                            sendData(name, email);
+                        sendData(name, email);
 
-                            User? user = await authService.signUpWithEmailAndPassword(email, password);
+                        User? user = await authService
+                            .signUpWithEmailAndPassword(email, password);
 
-                            if (user != null) {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text('Registro bem-sucedido'),
-                                    content: const Text(
-                                        'Seu registro foi concluído com sucesso!'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text('OK'),
-                                      ),
-                                    ],
-                                  );
-                                },
+                        if (user != null) {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Registro bem-sucedido'),
+                                content: const Text(
+                                    'Seu registro foi concluído com sucesso!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('OK'),
+                                  ),
+                                ],
                               );
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text('Erro de Registro'),
-                                    content: Text(
-                                        'O registro falhou. Tente novamente mais tarde.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text('OK'),
-                                      ),
-                                    ],
-                                  );
-                                },
+                            },
+                          );
+                          Navigator.of(context).pushNamed('/sign-in');
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Erro de Registro'),
+                                content: Text(
+                                    'O registro falhou. Tente novamente mais tarde.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('OK'),
+                                  ),
+                                ],
                               );
-                            }
-                          },
+                            },
+                          );
+                        }
+                      },
                       child: const Center(
                         child: Text(
                           "Cadastre-se",
