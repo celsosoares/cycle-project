@@ -1,13 +1,13 @@
-import 'package:cycle_project/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'pages/sign-in.dart';
 import 'pages/sign-up.dart';
-import 'pages/recommendations.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'pages/home.dart';
+import 'pages/recommendations.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,44 +26,14 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
       ),
-      home: MyHomePage(),
+      initialRoute: SignInPage.routeName,
       routes: {
-        '/sign-up': (context) => SignUpPage(),
-        '/sign-in': (context) => SignInPage(),
-        '/home': (context) => HomePage(),
-        '/recommendations': (context) => ListViewRecommendations(),
+        SignInPage.routeName: (context) => const SignInPage(),
+        SignUpPage.routeName: (context) => const SignUpPage(),
+        HomePage.routeName: (context) => HomePage(),
+        ListViewRecommendations.routeName: (context) =>
+            const ListViewRecommendations(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Text('Apenas testando'),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/sign-up');
-            },
-            child: Text('Tela de cadastro'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/sign-in');
-            },
-            child: Text('Tela de login'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/recommendations');
-            },
-            child: Text('Recomendações'),
-          )
-        ],
-      ),
     );
   }
 }

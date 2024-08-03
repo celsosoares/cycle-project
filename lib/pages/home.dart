@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+  static const routeName = '/HomePage';
   final List<Product> products = [
-    Product('Camisa preta', 'R\$29,90', 'Lorena Silva', 5, 'images/clothes.png'),
-    Product('Acessorios', 'R\$45,00', 'Camila Souza', 5, 'images/accessories.png'),
+    Product(
+        'Camisa preta', 'R\$29,90', 'Lorena Silva', 5, 'images/clothes.png'),
+    Product(
+        'Acessorios', 'R\$45,00', 'Camila Souza', 5, 'images/accessories.png'),
     Product('Sapatos', 'R\$35,00', 'Camila Souza', 5, 'images/shoes.png'),
     Product('Guarda-chuva', 'R\$40,00', 'Camila Souza', 5, 'images/bags.png'),
     Product('Pneu', 'R\$40,00', 'Camila Souza', 5, 'images/google.png'),
@@ -41,10 +45,13 @@ class HomePage extends StatelessWidget {
             itemBuilder: (context, index) {
               return Card(
                 shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.black), // Defina a cor da borda
-                borderRadius: BorderRadius.circular(10),),
+                  side:
+                      BorderSide(color: Colors.black), // Defina a cor da borda
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: ListTile(
-                  leading: Image.network(products[index].image), // Substitua pela URL real da imagem
+                  leading: Image.network(products[index]
+                      .image), // Substitua pela URL real da imagem
                   title: Text(products[index].name),
                   subtitle: Text(products[index].seller),
                   trailing: Column(
@@ -52,7 +59,8 @@ class HomePage extends StatelessWidget {
                       Text(products[index].price),
                       Row(
                         mainAxisSize: MainAxisSize.min,
-                        children: List.generate(5, (i) => Icon(Icons.star_border)),
+                        children:
+                            List.generate(5, (i) => Icon(Icons.star_border)),
                       ),
                     ],
                   ),
