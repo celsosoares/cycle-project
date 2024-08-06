@@ -22,6 +22,14 @@ class _WelcomePageState extends State<WelcomePage> {
     });
   }
 
+  void goToPreviousPage() {
+    setState(() {
+      if (currentPage > 0) {
+        currentPage--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     String finalPageButton = 'Próximo';
@@ -64,9 +72,31 @@ class _WelcomePageState extends State<WelcomePage> {
             left: 100,
             child: Padding(
               padding: const EdgeInsets.only(top: 500.0),
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: pageIndicator,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: pageIndicator,
+                  ),
+                  if (currentPage == 0)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 24.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          minimumSize: const Size(100, 40),
+                        ),
+                        onPressed: goToNextPage,
+                        child: Text(
+                          finalPageButton,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
           ),
@@ -77,18 +107,16 @@ class _WelcomePageState extends State<WelcomePage> {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: SizedBox(
-                      height: 50,
+                      height: 40,
                       child: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/SignIn');
-                        },
+                        onPressed: goToPreviousPage,
                         child: const Text(
-                          "Pular",
+                          "Anterior",
                           style: TextStyle(
                             color: Color.fromARGB(221, 63, 62, 62),
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -107,19 +135,20 @@ class _WelcomePageState extends State<WelcomePage> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 20, 20),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: SizedBox(
-                      height: 50,
+                      height: 40,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
+                          minimumSize: const Size(100, 40),
                         ),
                         onPressed: goToNextPage,
                         child: Text(
                           finalPageButton,
-                          style: const TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ),
                     ),
