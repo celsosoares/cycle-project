@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/home.dart';
 import 'pages/recommendations.dart';
+import 'pages/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +27,9 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
       ),
-      initialRoute: SignInPage.routeName,
+      initialRoute: WelcomePage.routeName,
       routes: {
+        WelcomePage.routeName: (context) => const WelcomePage(),
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomePage.routeName: (context) => HomePage(),
