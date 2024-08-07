@@ -24,7 +24,7 @@ class PageOne extends StatelessWidget {
             children: [
               Image.asset(
                 'images/welcome1.png',
-                height: 200,
+                height: 250, // Aumentar a altura da imagem aqui
               ),
               const SizedBox(height: 16),
               const Text(
