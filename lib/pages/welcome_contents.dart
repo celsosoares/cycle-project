@@ -7,34 +7,45 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            'images/Hand.png',
-            height: 200,
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset(
+            'images/Group 1.png',
+            fit: BoxFit.cover,
           ),
-          const SizedBox(height: 16),
-          const Text(
-            'Bem-vindo ao Cycle!',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'images/welcome1.png',
+                height: 250, // Aumentar a altura da imagem aqui
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Bem-vindo ao Cycle!',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Descubra novos designers de materiais reciclados na sua cidade, conheça seus produtos e doe materiais. Ajude ao meio ambiente enquanto ganha benefícios na nossa plataforma.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          const Text(
-            'Aqui você poderá ajudar ao meio ambiente, enquanto recebe benefícios durante o processo.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -44,41 +55,52 @@ class PageTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Expanded(
-          child: Center(
-            child: Image.asset(
-              'images/Hand.png',
-              height: 200,
-            ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset(
+            'images/Group 1.png',
+            fit: BoxFit.cover,
           ),
         ),
-        const Expanded(
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Doação',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+        Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  'images/welcome2.png',
+                  height: 200,
                 ),
-                SizedBox(height: 8),
-                Text(
-                  'Você poderá adquirir pontos por doar que estão sem uso na sua casa e transformá-losem descontos nas suas compras.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Doação',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Ao doar materiais que estão sem uso na sua casa, você terá a oportunidade de acumular pontos que podem ser convertidos em descontos nas suas compras.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -90,41 +112,52 @@ class PageThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Expanded(
-          child: Center(
-            child: Image.asset(
-              'images/Hand.png',
-              height: 200,
-            ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset(
+            'images/Group 1.png',
+            fit: BoxFit.cover,
           ),
         ),
-        Expanded(
-          child: const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Compras',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+        Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  'images/welcome3.png',
+                  height: 200,
                 ),
-                SizedBox(height: 8),
-                Text(
-                  'Aqui você vai poder fazer compras, de diversos designers de produtos recicláveis e usar suas doações para ajuda-los e a receber descontos nas suas compras.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            Expanded(
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Compras',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Você poderá explorar uma variedade de produtos recicláveis de diversos designers e utilizar suas doações para apoiá-los. É uma maneira incrível de fazer compras conscientes e apoiar o trabalho de designers comprometidos com sustentabilidade.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
