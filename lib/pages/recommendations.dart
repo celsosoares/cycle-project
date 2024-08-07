@@ -175,7 +175,7 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
               child: InkWell(
                 onTap: () {
                   // Add your button functionality here
-                  print("Button tapped");
+                  Navigator.popAndPushNamed(context, '/HomePage');
                 },
                 child: Center(
                   child: Text(

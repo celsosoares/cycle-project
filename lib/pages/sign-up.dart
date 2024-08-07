@@ -24,9 +24,6 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _checkPasswordController =
       TextEditingController();
 
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _checkPassword = TextEditingController();
-
   bool _passVis = true;
   AuthService authService = AuthService();
 
@@ -195,7 +192,8 @@ class _SignUpPageState extends State<SignUpPage> {
         validator: (value) {
           if (value != null && value.isEmpty) {
             return "Reinsira a senha";
-          } else if (_password.text != _checkPassword.text) {
+          } else if (_passwordController.text !=
+              _checkPasswordController.text) {
             return "A confirmação de senha não confere";
           }
           return null;
@@ -221,7 +219,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           color: Colors.black,
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -298,28 +296,28 @@ class _SignUpPageState extends State<SignUpPage> {
                                   TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
+                                      Navigator.pushNamed(context, '/SignIn');
                                     },
-                                    child: Text('OK'),
+                                    child: const Text('OK'),
                                   ),
                                 ],
                               );
                             },
                           );
-                          Navigator.of(context).pushNamed('/sign-in');
                         } else {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialog(
                                 title: const Text('Erro de Registro'),
-                                content: Text(
+                                content: const Text(
                                     'O registro falhou. Tente novamente mais tarde.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: Text('OK'),
+                                    child: const Text('OK'),
                                   ),
                                 ],
                               );
@@ -399,7 +397,7 @@ class _SignUpPageState extends State<SignUpPage> {
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 3,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),

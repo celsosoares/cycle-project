@@ -7,6 +7,7 @@ import '../../utils/colors.dart';
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
   static const routeName = '/SignIn';
+
   @override
   _SignInPageState createState() => _SignInPageState();
 }
@@ -116,122 +117,142 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
         child: SafeArea(
-            child: ListView(
-          children: [
-            SizedBox(height: size.height * 0.03),
-            Text(
-              "Entre na sua conta",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 37,
-                color: textColor1,
+          child: ListView(
+            children: [
+              SizedBox(height: size.height * 0.03),
+              Text(
+                "Entre na sua conta",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 37,
+                  color: textColor1,
+                ),
               ),
-            ),
-            const SizedBox(height: 15),
-            Text(
-              "Seja bem vindo",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 27, color: textColor2, height: 1.2),
-            ),
-            SizedBox(height: size.height * 0.04),
-            _buildTextEmail(),
-            _buildTextPass(),
-            const SizedBox(height: 10),
-            SizedBox(height: size.height * 0.04),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                children: [
-                  Container(
-                    width: size.width,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      color: buttonColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        String email = _emailController.text.trim();
-                        String password = _passwordController.text.trim();
+              const SizedBox(height: 15),
+              Text(
+                "Seja bem vindo",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 27, color: textColor2, height: 1.2),
+              ),
+              SizedBox(height: size.height * 0.04),
+              _buildTextEmail(),
+              _buildTextPass(),
+              const SizedBox(height: 10),
+              SizedBox(height: size.height * 0.04),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Column(
+                  children: [
+                    Container(
+                      width: size.width,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      decoration: BoxDecoration(
+                        color: buttonColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: InkWell(
+                        onTap: () async {
+                          String email = _emailController.text.trim();
+                          String password = _passwordController.text.trim();
 
-                        User? user = await authService
-                            .signInWithEmailAndPassword(email, password);
+                          User? user = await authService
+                              .signInWithEmailAndPassword(email, password);
 
-                        if (user != null) {
-                          Navigator.of(context).pushNamed('/HomePage');
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text('Erro de Login'),
-                                content: Text(
-                                    'Credenciais inválidas. Tente novamente.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                      },
-                      child: const Center(
-                        child: Text(
-                          "Entrar",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(
-                                255, 235, 235, 235), //cor do texto
-                            fontSize: 22,
+                          if (user != null) {
+                            Navigator.of(context).pushNamed('/ListView');
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Erro de Login'),
+                                  content: Text(
+                                      'Credenciais inválidas. Tente novamente.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                        child: const Center(
+                          child: Text(
+                            "Entrar",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(
+                                  255, 235, 235, 235), //cor do texto
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: size.height * 0.06),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 2,
-                        width: size.width * 0.2,
-                        color: Colors.black12,
-                      ),
-                      Text(
-                        "  Ou entre com   ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: textColor2,
-                          fontSize: 16,
+                    SizedBox(height: size.height * 0.06),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 2,
+                          width: size.width * 0.2,
+                          color: Colors.black12,
                         ),
-                      ),
-                      Container(
-                        height: 2,
-                        width: size.width * 0.2,
-                        color: Colors.black12,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: size.height * 0.06),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      socialIcon("images/google.png"),
-                      socialIcon("images/apple.png"),
-                      socialIcon("images/facebook.png"),
-                    ],
-                  ),
-                ],
+                        Text(
+                          "  Ou entre com   ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: textColor2,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Container(
+                          height: 2,
+                          width: size.width * 0.2,
+                          color: Colors.black12,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.06),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        socialIcon("images/google.png"),
+                        socialIcon("images/apple.png"),
+                        socialIcon("images/facebook.png"),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.06),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Ainda não tem uma conta?',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.popAndPushNamed(context, '/SignUp');
+                          },
+                          child: Text(
+                            'Criar conta',
+                            style: TextStyle(fontSize: 15, color: Colors.green),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        )),
+            ],
+          ),
+        ),
       ),
     );
   }
