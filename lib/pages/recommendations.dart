@@ -69,11 +69,17 @@ class _ListViewRecommendationsState extends State<ListViewRecommendations> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Flexible(
-          child: Text(
-            'O que mais te interessa para comprar?',
-            maxLines: 2, // Allow the text to break into two lines
-            overflow: TextOverflow.ellipsis,
+        title: GestureDetector(
+          onTap: () {
+            // Navigate to DebugPage when the text is clicked
+            Navigator.pushNamed(context, '/DonationScreen');
+          },
+          child: Flexible(
+            child: Text(
+              'O que mais te interessa para comprar?',
+              maxLines: 2, // Allow the text to break into two lines
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
         leading: IconButton(

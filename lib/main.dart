@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 import 'pages/home.dart';
 import 'pages/recommendations.dart';
 import 'pages/welcome_page.dart';
+import 'pages/donation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomePage.routeName: (context) => HomePage(),
+        DonationScreen.routeName: (context) => DonationScreen(),
         ListViewRecommendations.routeName: (context) =>
             const ListViewRecommendations(),
       },
