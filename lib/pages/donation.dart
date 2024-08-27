@@ -37,6 +37,66 @@ class DonationScreen extends StatelessWidget {
 			  ),
 			),
 		  ),
+		  SizedBox(height: 20), // Add some spacing
+		  Row(
+			mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+			children: [
+			  Container(
+				width: 150,
+				height: 200,
+				decoration: BoxDecoration(
+				  color: Colors.white, // Changed to white
+				  borderRadius: BorderRadius.circular(10),
+				),
+				child: Column(
+				  mainAxisAlignment: MainAxisAlignment.center,
+				  children: [
+					Image.asset(
+					  'images/specific-designer.png', // Replace with your image URL
+					  width: 100,
+					  height: 100,
+					),
+					SizedBox(height: 10), // Add some spacing between image and text
+					Text(
+					  'Retângulo 1',
+					  style: TextStyle(
+						color: Colors.black, // Changed text color to black for contrast
+						fontSize: 16,
+					  ),
+					  textAlign: TextAlign.center,
+					),
+				  ],
+				),
+			  ),
+			  Container(
+				width: 150,
+				height: 200,
+				decoration: BoxDecoration(
+				  color: Colors.white, // Changed to white
+				  borderRadius: BorderRadius.circular(10),
+				),
+				child: Column(
+				  mainAxisAlignment: MainAxisAlignment.center,
+				  children: [
+					Image.asset(
+					  'images/specific-designer.png', // Replace with your image URL
+					  width: 100,
+					  height: 100,
+					),
+					SizedBox(height: 10), // Add some spacing between image and text
+					Text(
+					  'Retângulo 2',
+					  style: TextStyle(
+						color: Colors.black, // Changed text color to black for contrast
+						fontSize: 16,
+					  ),
+					  textAlign: TextAlign.center,
+					),
+				  ],
+				),
+			  ),
+			],
+		  ),
 		],
 	  ),
 	);
