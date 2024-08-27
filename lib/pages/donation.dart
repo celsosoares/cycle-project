@@ -41,58 +41,68 @@ class DonationScreen extends StatelessWidget {
 		  Row(
 			mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 			children: [
-			  Container(
-				width: 150,
-				height: 200,
-				decoration: BoxDecoration(
-				  color: Colors.white, // Changed to white
-				  borderRadius: BorderRadius.circular(10),
-				),
-				child: Column(
-				  mainAxisAlignment: MainAxisAlignment.center,
-				  children: [
-					Image.asset(
-					  'images/specific-designer.png', // Replace with your image URL
-					  width: 100,
-					  height: 100,
-					),
-					SizedBox(height: 10), // Add some spacing between image and text
-					Text(
-					  'Retângulo 1',
-					  style: TextStyle(
-						color: Colors.black, // Changed text color to black for contrast
-						fontSize: 16,
+			  InkWell(
+				onTap: () {
+				  Navigator.pushNamed(context, '/SignIn');
+				},
+				child: Container(
+				  width: 150,
+				  height: 200,
+				  decoration: BoxDecoration(
+					color: Colors.white, // Changed to white
+					borderRadius: BorderRadius.circular(10),
+				  ),
+				  child: Column(
+					mainAxisAlignment: MainAxisAlignment.center,
+					children: [
+					  Image.asset(
+						'images/specific-material.png', // Replace with your image URL
+						width: 120,
+						height: 120,
 					  ),
-					  textAlign: TextAlign.center,
-					),
-				  ],
+					  SizedBox(height: 10), // Add some spacing between image and text
+					  Text(
+						'Quero doar um material específico',
+						style: TextStyle(
+						  color: Colors.black, // Changed text color to black for contrast
+						  fontSize: 16,
+						),
+						textAlign: TextAlign.center,
+					  ),
+					],
+				  ),
 				),
 			  ),
-			  Container(
-				width: 150,
-				height: 200,
-				decoration: BoxDecoration(
-				  color: Colors.white, // Changed to white
-				  borderRadius: BorderRadius.circular(10),
-				),
-				child: Column(
-				  mainAxisAlignment: MainAxisAlignment.center,
-				  children: [
-					Image.asset(
-					  'images/specific-designer.png', // Replace with your image URL
-					  width: 100,
-					  height: 100,
-					),
-					SizedBox(height: 10), // Add some spacing between image and text
-					Text(
-					  'Retângulo 2',
-					  style: TextStyle(
-						color: Colors.black, // Changed text color to black for contrast
-						fontSize: 16,
+			  InkWell(
+				onTap: () {
+				  Navigator.pushNamed(context, '/SignIn');
+				},
+				child: Container(
+				  width: 150,
+				  height: 200,
+				  decoration: BoxDecoration(
+					color: Colors.white, // Changed to white
+					borderRadius: BorderRadius.circular(10),
+				  ),
+				  child: Column(
+					mainAxisAlignment: MainAxisAlignment.center,
+					children: [
+					  Image.asset(
+						'images/specific-designer.png', // Replace with your image URL
+						width: 120,
+						height: 120,
 					  ),
-					  textAlign: TextAlign.center,
-					),
-				  ],
+					  SizedBox(height: 10), // Add some spacing between image and text
+					  Text(
+						'Quero doar para um designer específico',
+						style: TextStyle(
+						  color: Colors.black, // Changed text color to black for contrast
+						  fontSize: 16,
+						),
+						textAlign: TextAlign.center,
+					  ),
+					],
+				  ),
 				),
 			  ),
 			],
