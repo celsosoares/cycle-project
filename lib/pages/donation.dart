@@ -43,7 +43,7 @@ class DonationScreen extends StatelessWidget {
 			children: [
 			  InkWell(
 				onTap: () {
-				  Navigator.pushNamed(context, '/SignIn');
+				  Navigator.pushNamed(context, '/SearchArtistScreen');
 				},
 				child: Container(
 				  width: 150,
@@ -75,7 +75,7 @@ class DonationScreen extends StatelessWidget {
 			  ),
 			  InkWell(
 				onTap: () {
-				  Navigator.pushNamed(context, '/SignIn');
+				  Navigator.pushNamed(context, '/SearchArtistScreen');
 				},
 				child: Container(
 				  width: 150,
