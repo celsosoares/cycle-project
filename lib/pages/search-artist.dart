@@ -24,19 +24,20 @@ class SearchArtistScreen extends StatelessWidget {
               },
             ),
             SizedBox(height: 16.0),
+            
             Card(
               child: Column(
                 children: [
-                  Image.network('https://via.placeholder.com/150'),
+                  Image.asset('https://via.placeholder.com/150'),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Artist Name 1', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: Text('Lorena Silva', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.location_on),
-                      Text('City Name 1'),
+                      Text('Recife, pe'),
                     ],
                   ),
                   Row(
@@ -45,13 +46,13 @@ class SearchArtistScreen extends StatelessWidget {
                       Row(
                         children: [
                           Icon(Icons.shopping_cart),
-                          Text('100 Sales'),
+                          Text('100 vendas'),
                         ],
                       ),
                       Row(
                         children: [
                           Icon(Icons.star),
-                          Text('50 Donations'),
+                          Text('50 doações'),
                         ],
                       ),
                     ],
@@ -63,16 +64,16 @@ class SearchArtistScreen extends StatelessWidget {
             Card(
               child: Column(
                 children: [
-                  Image.network('https://via.placeholder.com/150'),
+                  Image.asset('images/matheus.png'),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Artist Name 2', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: Text('Matheus Henrique', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.location_on),
-                      Text('City Name 2'),
+                      Text('Recife, PE'),
                     ],
                   ),
                   Row(
@@ -81,13 +82,13 @@ class SearchArtistScreen extends StatelessWidget {
                       Row(
                         children: [
                           Icon(Icons.shopping_cart),
-                          Text('200 Sales'),
+                          Text('200 vendas'),
                         ],
                       ),
                       Row(
                         children: [
                           Icon(Icons.star),
-                          Text('75 Donations'),
+                          Text('75 doações'),
                         ],
                       ),
                     ],
