@@ -28,7 +28,7 @@ class SearchArtistScreen extends StatelessWidget {
             Card(
               child: Column(
                 children: [
-                  Image.asset('https://via.placeholder.com/150'),
+                  Image.asset('images/lorena.png'),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text('Lorena Silva', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
