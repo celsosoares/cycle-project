@@ -23,17 +23,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text('Olá, Vinícius'),
         actions: [
           IconButton(
             icon: Icon(Icons.exit_to_app),
             onPressed: () {
-              Navigator.of(context).pushNamed('/sign-in');
+              Navigator.of(context).pushNamed('/PointsListPage');
             },
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: Text('Meus pontos'), // Substitua pelo nome do usuário
+            
           ),
         ],
       ),
