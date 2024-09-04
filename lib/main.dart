@@ -10,6 +10,7 @@ import 'pages/recommendations.dart';
 import 'pages/welcome_page.dart';
 import 'pages/donation.dart';
 import 'pages/search-artist.dart';
+import 'pages/donation-confirmation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         SearchArtistScreen.routeName: (context) => SearchArtistScreen(),
         LorenaMaterials.routeName: (context) => LorenaMaterials(),
         DonationDetails.routeName: (context) => DonationDetails(),
+        DonationConfirmation.routeName: (context) => DonationConfirmation(),
         ListViewRecommendations.routeName: (context) =>
             const ListViewRecommendations(),
       },

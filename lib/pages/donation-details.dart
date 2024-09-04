@@ -117,7 +117,7 @@ class DonationDetails extends StatelessWidget {
               SizedBox(height: 20), // Add some space before the button
               ElevatedButton(
                 onPressed: () {
-                  // Add your onPressed code here!
+                  Navigator.pushNamed(context, '/DonationConfirmationScreen');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green, // Background color
