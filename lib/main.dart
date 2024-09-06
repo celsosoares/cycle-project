@@ -1,5 +1,6 @@
 import 'package:cycle_project/pages/donation-details.dart';
 import 'package:cycle_project/pages/lorena-materials.dart';
+import 'package:cycle_project/pages/points/points_list.dart';
 import 'package:flutter/material.dart';
 import 'pages/sign-in.dart';
 import 'pages/sign-up.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         LorenaMaterials.routeName: (context) => LorenaMaterials(),
         DonationDetails.routeName: (context) => DonationDetails(),
         DonationConfirmation.routeName: (context) => DonationConfirmation(),
+        PointsListPage.routeName: (context) => PointsListPage(),
         ListViewRecommendations.routeName: (context) =>
             const ListViewRecommendations(),
       },
