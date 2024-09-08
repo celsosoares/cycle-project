@@ -212,6 +212,7 @@ Widget build(BuildContext context) {
                               Text(products[index].price),
                               SizedBox(height: 3),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   ...List.generate(products[index].rating, 
                                       (i) => Icon(Icons.star, color: Colors.amber)),
