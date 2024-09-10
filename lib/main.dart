@@ -7,6 +7,10 @@ import 'pages/home.dart';
 import 'pages/recommendations.dart';
 import 'pages/welcome_page.dart';
 import 'pages/donation.dart';
+import 'pages/buying_product.dart';
+import 'pages/confirm_buying.dart';
+import 'pages/product_brought.dart';
+import 'pages/product_delivery.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,14 +26,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Cycle',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
       ),
-      initialRoute: WelcomePage.routeName,
+      initialRoute: ProductDelivery.routeName,
       routes: {
+        ProductPage.routeName: (context) => const ProductPage(),
         WelcomePage.routeName: (context) => const WelcomePage(),
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
@@ -37,6 +43,9 @@ class MyApp extends StatelessWidget {
         DonationScreen.routeName: (context) => DonationScreen(),
         ListViewRecommendations.routeName: (context) =>
             const ListViewRecommendations(),
+        ConfirmBuying.routeName: (context) => const ConfirmBuying(),
+        ProductBrought.routeName: (context) => const ProductBrought(),
+        ProductDelivery.routeName: (context) => const ProductDelivery()
       },
     );
   }
