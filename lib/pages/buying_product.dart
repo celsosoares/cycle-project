@@ -73,30 +73,11 @@ class _ProductPageState extends State<ProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                produto.title,
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pushNamed('/HomePage'),
         ),
-        centerTitle: true,
+        title: Text('Camisa Preta'),
       ),
       body: SingleChildScrollView(
         child: Padding(

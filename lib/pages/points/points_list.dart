@@ -7,25 +7,25 @@ class PointsListPage extends StatelessWidget {
 
   final List<Pessoa> pessoas = [
     Pessoa(
-        nome: 'João',
+        nome: 'Lorena',
         sobrenome: 'Silva',
         doacoes: 2,
         compras: 1,
-        pontos: 120,
+        pontos: 100,
         pontosPendentes: 20),
     Pessoa(
         nome: 'Maria',
         sobrenome: 'Oliveira',
         doacoes: 5,
         compras: 3,
-        pontos: 300,
+        pontos: 10,
         pontosPendentes: 50),
     Pessoa(
         nome: 'Carlos',
         sobrenome: 'Souza',
         doacoes: 1,
         compras: 2,
-        pontos: 80,
+        pontos: 10,
         pontosPendentes: 10),
   ];
 

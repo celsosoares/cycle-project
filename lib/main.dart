@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
       ),
-      initialRoute: ConfirmBuying.routeName,
+      initialRoute: SignInPage.routeName,
       routes: {
         ProductPage.routeName: (context) => const ProductPage(),
         WelcomePage.routeName: (context) => const WelcomePage(),

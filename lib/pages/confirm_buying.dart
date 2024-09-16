@@ -115,29 +115,11 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
     return Scaffold(
       backgroundColor: Colors.grey[200], // Background cinza bem claro
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.popAndPushNamed(context, '/BuyProduct');
-              },
-            ),
-            const Spacer(),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Confirmar',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pushNamed('/BuyProduct'),
         ),
-        centerTitle: true,
+        title: Text('Camisa Preta'),
       ),
       body: SingleChildScrollView(
         child: Column(

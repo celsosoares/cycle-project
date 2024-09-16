@@ -160,7 +160,7 @@ class _SignInPageState extends State<SignInPage> {
                               .signInWithEmailAndPassword(email, password);
 
                           if (user != null) {
-                            Navigator.of(context).pushNamed('/ListView');
+                            Navigator.of(context).pushNamed('/HomePage');
                           } else {
                             showDialog(
                               context: context,

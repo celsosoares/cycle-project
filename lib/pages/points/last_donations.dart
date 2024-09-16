@@ -85,7 +85,7 @@ class UltimasDoacoesPage extends StatelessWidget {
                   _buildDonationCard(
                     context: context,
                     donationId: '1234',
-                    profileName: 'João Silva',
+                    profileName: 'Lorena Silva',
                     status: 'A ser entregue',
                     pontos: 50,
                     ultimaAtualizacao: '05/02/2024 às 10:00',

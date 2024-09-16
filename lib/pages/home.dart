@@ -7,16 +7,13 @@ class HomePage extends StatelessWidget {
   static const routeName = '/HomePage';
 
   final List<Product> products = [
-    Product('Camisa preta', 'R\$29,90', 'Lorena Silva', 5, 'images/clothes.png'),
+    Product('Camisa preta', 'R\$22,90', 'Lorena Silva', 5, 'images/camisa.png'),
     Product('Acessorios', 'R\$45,00', 'Camila Souza', 5, 'images/accessories.png'),
     Product('Sapatos', 'R\$35,00', 'Camila Souza', 5, 'images/shoes.png'),
     Product('Guarda-chuva', 'R\$40,00', 'Camila Souza', 5, 'images/bags.png'),
-    Product('Pneu', 'R\$40,00', 'Camila Souza', 5, 'images/google.png'),
     Product('Decoração', 'R\$40,00', 'Camila Souza', 5, 'images/furniture.png'),
-    Product('Prato', 'R\$40,00', 'Camila Souza', 5, 'images/crafts.png'),
-    Product('Maça', 'R\$40,00', 'Camila Souza', 4, 'images/apple.png'),
-    Product('Porta', 'R\$40,00', 'Camila Souza', 5, 'images/utensils.png'),
-    Product('Televisão', 'R\$40,00', 'Camila Souza', 5, 'images/facebook.png'),
+    Product('Artesanato', 'R\$40,00', 'Camila Souza', 5, 'images/crafts.png'),
+    Product('Utensilios', 'R\$40,00', 'Camila Souza', 5, 'images/utensils.png'),
   ];
 
   final List<OfferItem> offerItems = [
@@ -41,7 +38,7 @@ class HomePage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pushNamed('/SignIn'),
         ),
         title: Text(
           'Olá, Vinícius',
@@ -66,7 +63,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(  // Wrap the entire body in SingleChildScrollView for scrolling
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -96,14 +93,14 @@ class HomePage extends StatelessWidget {
                       elevation: 6,
                       shadowColor: Colors.grey.shade400,
                       child: Column(
-                        mainAxisSize: MainAxisSize.min, // Ensure the column only takes necessary space
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Image.network(
                                 offerItems[index].icon,
-                                width: screenWidth * 0.4, // Adjust width based on screen
+                                width: screenWidth * 0.4,
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -113,7 +110,7 @@ class HomePage extends StatelessWidget {
                             child: Text(
                               offerItems[index].text,
                               style: GoogleFonts.lato(
-                                fontSize: screenWidth * 0.05, // Scalable font size
+                                fontSize: screenWidth * 0.05,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.center,
@@ -124,7 +121,7 @@ class HomePage extends StatelessWidget {
                             child: Text(
                               offerItems[index].description,
                               style: GoogleFonts.lato(
-                                fontSize: screenWidth * 0.035, // Scalable font size
+                                fontSize: screenWidth * 0.035,
                                 color: Colors.grey.shade700,
                               ),
                               textAlign: TextAlign.center,
@@ -147,23 +144,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Categorias',
-                style: GoogleFonts.lato(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildCategoryCard(screenWidth, 'images/clothes.png', 'Roupas'),
-                _buildCategoryCard(screenWidth, 'images/accessories.png', 'Acessórios'),
-              ],
-            ),
-            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Você pode gostar',
@@ -176,72 +156,79 @@ class HomePage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               child: GridView.builder(
-                shrinkWrap: true, // Make the GridView take only the needed space
-                physics: NeverScrollableScrollPhysics(), // Disable scrolling for GridView
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: screenWidth > 600 ? 3 : 2, // Responsive columns
+                  crossAxisCount: screenWidth > 600 ? 3 : 2,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
-                  childAspectRatio: 0.8, // Make cards slightly taller
+                  childAspectRatio: 0.8,
                 ),
                 padding: EdgeInsets.all(8.0),
                 itemCount: products.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.black, width: 1),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    elevation: 4,
-                    margin: const EdgeInsets.all(4.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15),
+                  return GestureDetector(
+                    onTap: () {
+                      // Handle product tap action here
+                      print('Tapped on product: ${products[index].name}');
+                      Navigator.of(context).pushNamed('/BuyProduct');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      elevation: 4,
+                      margin: const EdgeInsets.all(4.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(15),
+                            ),
+                            child: Image.network(
+                              products[index].image,
+                              height: screenWidth * 0.2,
+                              width: double.infinity,
+                              fit: BoxFit.scaleDown,
+                            ),
                           ),
-                          child: Image.network(
-                            products[index].image,
-                            height: screenWidth * 0.2,
-                            width: double.infinity,
-                            fit: BoxFit.scaleDown,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                products[index].name,
-                                style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: screenWidth * 0.04, // Scalable font size
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  products[index].name,
+                                  style: GoogleFonts.roboto(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: screenWidth * 0.04,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 3),
-                              Text(products[index].seller),
-                              SizedBox(height: 7),
-                              Text(products[index].price),
-                              SizedBox(height: 3),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ...List.generate(
-                                    products[index].rating,
-                                    (i) => Icon(Icons.star, color: Colors.amber),
-                                  ),
-                                  ...List.generate(
-                                    5 - products[index].rating,
-                                    (i) => Icon(Icons.star_border),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                SizedBox(height: 3),
+                                Text(products[index].seller),
+                                SizedBox(height: 7),
+                                Text(products[index].price),
+                                SizedBox(height: 3),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ...List.generate(
+                                      products[index].rating,
+                                      (i) => Icon(Icons.star, color: Colors.amber),
+                                    ),
+                                    ...List.generate(
+                                      5 - products[index].rating,
+                                      (i) => Icon(Icons.star_border),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -261,30 +248,24 @@ class HomePage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Buscar',
+            label: 'Doar',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildCategoryCard(double screenWidth, String imagePath, String label) {
-    return Expanded(
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(color: Colors.black),
-        ),
-        elevation: 4,
-        margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-        child: ListTile(
-          leading: Image.network(imagePath, width: screenWidth * 0.1),
-          title: Text(label),
-        ),
+        currentIndex: 0, // Set this to the currently selected index
+        onTap: (index) {
+          // Handle navigation logic here based on the index
+          if (index == 0) {
+            Navigator.of(context).pushNamed('/HomePage');
+          } else if (index == 1) {
+            Navigator.of(context).pushNamed('/DonationScreen');
+          } else if (index == 2) {
+            Navigator.of(context).pushNamed('/ProfilePage');
+          }
+        },
       ),
     );
   }
