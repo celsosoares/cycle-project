@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:cycle_project/pages/buying_product.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart'; // Importando as classes necessárias
+import 'package:flutter/widgets.dart';
 
 class ConfirmBuying extends StatefulWidget {
   static const routeName = '/ConfirmBuying';
@@ -24,9 +24,9 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
     vendidos: 29,
     pontosDesigner: 100,
     imagens: [
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
+      'images/camisa.png',
+      'images/camisa.png',
+      'images/camisa.png',
     ],
   );
 
@@ -34,7 +34,7 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
     nome: 'Lorena Silva',
     bio:
         'Transformando materiais descartados em peças de moda únicas e conscientes! ✨🌿 Designer de moda e defensora do upcycling. Explore minha coleção exclusiva de roupas e acessórios feitos à mão, cada um contando sua própria história de renovação e sustentabilidade.',
-    fotoUrl: 'https://via.placeholder.com/100',
+    foto: 'images/Avatar.png',
   );
 
   final Address address = Address(
@@ -49,13 +49,12 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
     pix: 'Pix',
   );
 
-  String selectedPaymentMethod = 'Crédito'; // Método de pagamento selecionado
-
+  String selectedPaymentMethod = 'Crédito';
   int imagemSelecionada = 0;
-  int quantidade = 1; // Contador de quantidade inicial
+  int quantidade = 1;
 
-  int pontosUsados = 0; // Pontos que o usuário deseja usar
-  double desconto = 0.0; // Desconto calculado
+  int pontosUsados = 0;
+  double desconto = 0.0;
 
   void _selectPaymentMethod() {
     showModalBottomSheet(
@@ -151,54 +150,75 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
             Card(
               color: Colors.white,
               margin: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                width: 300, // Largura fixa para o Card
-                height: 80, // Altura fixa para o Card
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 40, // 1/4 do Card (tamanho do lado da imagem)
-                        height: 40,
-                        color: Colors.grey, // Placeholder para a imagem
-                        child: const Icon(Icons.location_on,
-                            size: 30, color: Colors.white),
-                      ),
-                      const SizedBox(width: 16.0),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              address.street,
-                              style: const TextStyle(
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 1.0),
-                            Text(
-                              address.complement,
-                              style: const TextStyle(
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 1.0),
-                            Text(
-                              address.cityStateZip,
-                              style: const TextStyle(
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 40, // Tamanho do lado da imagem
+                          height: 40,
+                          color: Colors.grey, // Placeholder para a imagem
+                          child: const Icon(Icons.location_on,
+                              size: 30, color: Colors.white),
                         ),
-                      ),
-                    ],
-                  ),
+                        const SizedBox(width: 16.0),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      address.street,
+                                      style: const TextStyle(
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pushNamed('/Address');
+                                    },
+                                    child: const Text(
+                                      'Mudar',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 10.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 1.0),
+                              Text(
+                                address.complement,
+                                style: const TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 1.0),
+                              Text(
+                                address.cityStateZip,
+                                style: const TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -206,7 +226,7 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
               'Informações dos produtos',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
-            // Segundo card com a primeira imagem do produto e contador de quantidade
+
             Card(
               color: Colors.white,
               margin: const EdgeInsets.all(16.0),
@@ -220,11 +240,7 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
                       SizedBox(
                         width: 60,
                         height: 60,
-                        child: Image.network(
-                          produto
-                              .imagens[0], // Substituindo o ícone pela imagem
-                          fit: BoxFit.cover,
-                        ),
+                        child: Image.asset(produto.imagens[0]),
                       ),
                       const SizedBox(width: 14.0),
                       Expanded(
@@ -255,7 +271,6 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
                           ],
                         ),
                       ),
-                      // Contador de quantidade
                       Text(
                         'X$quantidade',
                         style: const TextStyle(
@@ -271,7 +286,7 @@ class _ConfirmBuyingState extends State<ConfirmBuying> {
               'Método de pagamento',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
-            // Card de método de pagamento
+
             Card(
               color: Colors.white,
               margin: const EdgeInsets.all(16.0),

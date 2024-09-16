@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class Produto {
@@ -25,12 +26,12 @@ class Produto {
 class Designer {
   final String nome;
   final String bio;
-  final String fotoUrl;
+  final String foto;
 
   Designer({
     required this.nome,
     required this.bio,
-    required this.fotoUrl,
+    required this.foto,
   });
 }
 
@@ -53,9 +54,9 @@ class _ProductPageState extends State<ProductPage> {
     vendidos: 29,
     pontosDesigner: 100,
     imagens: [
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
+      'images/camisa.png',
+      'images/camisa.png',
+      'images/camisa.png',
     ],
   );
 
@@ -63,7 +64,7 @@ class _ProductPageState extends State<ProductPage> {
     nome: 'Lorena Silva',
     bio:
         'Transformando materiais descartados em peças de moda únicas e conscientes! ✨🌿 Designer de moda e defensora do upcycling. Explore minha coleção exclusiva de roupas e acessórios feitos à mão, cada um contando sua própria história de renovação e sustentabilidade.',
-    fotoUrl: 'https://via.placeholder.com/100',
+    foto: 'images/Avatar.png',
   );
 
   int imagemSelecionada = 0;
@@ -113,7 +114,7 @@ class _ProductPageState extends State<ProductPage> {
                       Stack(
                         children: [
                           Center(
-                            child: Image.network(
+                            child: Image.asset(
                               produto.imagens[imagemSelecionada],
                               height: 200,
                               width: 200,
@@ -152,7 +153,7 @@ class _ProductPageState extends State<ProductPage> {
                                       : Colors.grey,
                                 ),
                                 image: DecorationImage(
-                                  image: NetworkImage(produto.imagens[index]),
+                                  image: AssetImage(produto.imagens[index]),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -224,7 +225,7 @@ class _ProductPageState extends State<ProductPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CircleAvatar(
-                        backgroundImage: NetworkImage(designer.fotoUrl),
+                        backgroundImage: AssetImage(designer.foto),
                         radius: 30,
                       ),
                       const SizedBox(width: 16),

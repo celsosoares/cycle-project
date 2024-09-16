@@ -11,6 +11,7 @@ import 'pages/buying_product.dart';
 import 'pages/confirm_buying.dart';
 import 'pages/product_brought.dart';
 import 'pages/product_delivery.dart';
+import 'pages/address.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 16, 134, 0)),
       ),
-      initialRoute: ProductDelivery.routeName,
+      initialRoute: ConfirmBuying.routeName,
       routes: {
         ProductPage.routeName: (context) => const ProductPage(),
         WelcomePage.routeName: (context) => const WelcomePage(),
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
             const ListViewRecommendations(),
         ConfirmBuying.routeName: (context) => const ConfirmBuying(),
         ProductBrought.routeName: (context) => const ProductBrought(),
-        ProductDelivery.routeName: (context) => const ProductDelivery()
+        ProductDelivery.routeName: (context) => const ProductDelivery(),
+        AddressScreen.routeName: (context) => AddressScreen(),
       },
     );
   }

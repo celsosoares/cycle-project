@@ -1,9 +1,9 @@
 import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cycle_project/pages/buying_product.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart'; // Importando as classes necessárias
+import 'package:flutter/widgets.dart';
 
 class ProductDelivery extends StatefulWidget {
   static const routeName = '/ProductDelivery';
@@ -24,9 +24,9 @@ class _ProductDeliveryState extends State<ProductDelivery> {
     vendidos: 29,
     pontosDesigner: 100,
     imagens: [
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
-      'https://via.placeholder.com/200',
+      'images/camisa.png',
+      'images/camisa.png',
+      'images/camisa.png',
     ],
   );
 
@@ -34,7 +34,7 @@ class _ProductDeliveryState extends State<ProductDelivery> {
     nome: 'Lorena Silva',
     bio:
         'Transformando materiais descartados em peças de moda únicas e conscientes! ✨🌿 Designer de moda e defensora do upcycling. Explore minha coleção exclusiva de roupas e acessórios feitos à mão, cada um contando sua própria história de renovação e sustentabilidade.',
-    fotoUrl: 'https://via.placeholder.com/100',
+    foto: 'images/Avatar.png',
   );
 
   final Address address = Address(
@@ -93,11 +93,11 @@ class _ProductDeliveryState extends State<ProductDelivery> {
         child: Column(
           children: [
             // Card de status do pedido
-            Card(
+            const Card(
               color: Colors.white,
-              margin: const EdgeInsets.all(16.0),
+              margin: EdgeInsets.all(16.0),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -125,25 +125,25 @@ class _ProductDeliveryState extends State<ProductDelivery> {
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
             // Card de detalhes do pedido
-            Card(
+            const Card(
               color: Colors.white,
-              margin: const EdgeInsets.all(16.0),
+              margin: EdgeInsets.all(16.0),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text('Pagamento efetuado'),
                         Text('07/02/2024 às 13:39'),
                       ],
                     ),
-                    const SizedBox(height: 8.0),
+                    SizedBox(height: 8.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text('Pedido confirmado'),
                         Text('07/02/2024 às 13:39'),
                       ],
@@ -227,14 +227,9 @@ class _ProductDeliveryState extends State<ProductDelivery> {
                   child: Row(
                     children: [
                       SizedBox(
-                        width: 60,
-                        height: 60,
-                        child: Image.network(
-                          produto
-                              .imagens[0], // Substituindo o ícone pela imagem
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          width: 60,
+                          height: 60,
+                          child: Image.asset(produto.imagens[0])),
                       const SizedBox(width: 14.0),
                       Expanded(
                         child: Column(
@@ -326,9 +321,9 @@ class _ProductDeliveryState extends State<ProductDelivery> {
                     const SizedBox(
                       height: 8.0,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text("Quantos pontos foram usados"),
                         Text('100')
                       ],
@@ -398,7 +393,7 @@ class _StatusItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
         Container(
           width: 24,
@@ -409,12 +404,18 @@ class _StatusItem extends StatelessWidget {
             border: Border.all(color: color, width: 2),
           ),
           child: isCompleted
-              ? Icon(Icons.check, color: Colors.white, size: 16)
+              ? const Icon(Icons.check, color: Colors.white, size: 16)
               : null,
         ),
-        const SizedBox(width: 8.0),
-        Text(text),
-        const SizedBox(width: 16.0),
+        const SizedBox(height: 4.0),
+        SizedBox(
+          width: 80, // Limitar a largura do texto
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 12.0),
+          ),
+        ),
       ],
     );
   }
