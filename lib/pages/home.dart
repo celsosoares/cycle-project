@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     Product('Camisa preta', 'R\$22,90', 'Lorena Silva', 5, 'images/camisa.png'),
     Product('Acessorios', 'R\$45,00', 'Camila Souza', 5, 'images/accessories.png'),
     Product('Sapatos', 'R\$35,00', 'Camila Souza', 5, 'images/shoes.png'),
-    Product('Guarda-chuva', 'R\$40,00', 'Camila Souza', 5, 'images/bags.png'),
+    Product('Bolsas', 'R\$40,00', 'Camila Souza', 5, 'images/bags.png'),
     Product('Decoração', 'R\$40,00', 'Camila Souza', 5, 'images/furniture.png'),
     Product('Artesanato', 'R\$40,00', 'Camila Souza', 5, 'images/crafts.png'),
     Product('Utensilios', 'R\$40,00', 'Camila Souza', 5, 'images/utensils.png'),
@@ -22,8 +22,8 @@ class HomePage extends StatelessWidget {
       'Lorena Silva',
       'Lorena Silva é uma vendedora apaixonada por sustentabilidade e inovação...',
     ),
-    OfferItem('images/accessories.png', 'Camila Soares', ''),
-    OfferItem('images/accessories.png', 'Roberta Lima', ''),
+    OfferItem('images/lorena.png', 'Camila Soares', 'Camila é uma famosa artesã ...'),
+    OfferItem('images/lorena.png', 'Roberta Lima', 'Roberta é conhecida pela suas obras abstratas ...'),
   ];
 
   final PageController _pageController = PageController();
