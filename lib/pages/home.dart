@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     OfferItem(
       'images/lorena.png',
       'Lorena Silva',
-      'Lorena Silva é uma vendedora apaixonada por sustentabilidade e inovação...',
+      'Lorena Silva é uma vendedora apaixonaaaaada por sustentabilidade e inovação...',
     ),
     OfferItem('images/lorena.png', 'Camila Soares', 'Camila é uma famosa artesã ...'),
     OfferItem('images/lorena.png', 'Roberta Lima', 'Roberta é conhecida pela suas obras abstratas ...'),
